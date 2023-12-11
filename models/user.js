@@ -25,17 +25,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    isAdmin: {
-        type: Boolean,
-        default: false,
-    },
+    // isAdmin: {
+    //     type: Boolean,
+    //     default: false,
+    // },
     image: {
         type: String,
         default: ''
     },
     role: {
         type: String,
-        default: "user"
+        default: "admin"
     },
     createdAt: {
         type: Date,

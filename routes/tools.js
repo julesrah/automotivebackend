@@ -85,14 +85,16 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) => {
 });
 
 router.put('/:id', uploadOptions.single('image'), async (req, res) => {
-    console.log(req.body);
     if (!mongoose.isValidObjectId(req.params.id)) {
         return res.status(400).send('Invalid Tool Id');
     }
+
     const category = await Category.findById(req.body.category);
     if (!category) return res.status(400).send('Invalid Category');
 
     const tool = await Tool.findById(req.params.id);
+    // console.log(req.params.id, "dfsds");
+
     if (!tool) return res.status(400).send('Invalid Tool!');
 
     const file = req.file;
@@ -120,6 +122,7 @@ router.put('/:id', uploadOptions.single('image'), async (req, res) => {
         },
         { new: true }
     );
+
 
     if (!updatedTool) return res.status(500).send('the Tool cannot be updated!');
 
